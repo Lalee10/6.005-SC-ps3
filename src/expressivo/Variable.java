@@ -1,26 +1,27 @@
 package expressivo;
 
-public class Variable implements Expression{
-	
-	
-	private final String var;
-	
-	public Variable(String v){
-		var = v;
-	};
-	
-	public String toString(){return var;}
-	
+public class Variable implements Expression {
 
-	public boolean equals(Object other){
-		if(!(other instanceof Variable)){return false;}
-		Variable otherVar = (Variable) other;
-		return var.equals(otherVar.var);
+	private final String var;
+
+	public Variable(String v) {
+		this.var = v;
+	};
+
+	public String toString() {
+		return this.var;
+	}
+
+	public boolean equals(Object other) {
+		if (!(other instanceof Variable)) {
+			return false;
 		}
-	public int hashCode(){
-	    int result = 43;
-	    int c = var.hashCode();
-	    return 37*result + c;
+		Variable otherVar = (Variable) other;
+		return this.var.equals(otherVar.var);
+	}
+
+	public int hashCode() {
+		return this.var.length() * 6969;
 	}
 
 }

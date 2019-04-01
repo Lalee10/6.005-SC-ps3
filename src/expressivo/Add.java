@@ -30,7 +30,7 @@ public class Add implements Expression {
 		}
 
 		Add thatAdd = (Add) thatObject;
-		return (this.left.equals(thatAdd.left) && this.right.equals(thatAdd));
+		return (this.left.equals(thatAdd.left) && this.right.equals(thatAdd.right));
 	}
 
 	/**
