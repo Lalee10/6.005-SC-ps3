@@ -13,7 +13,18 @@ import org.junit.Test;
 public class ExpressionTest {
 
     // Testing strategy
-    //   TODO
+    /*
+     *	Operators:
+     *		1. Single
+     *		2. Multiple same operators
+     *		3. Multiple different operators
+     * 
+     *	Brackets / Priority:
+     *		1. Same priority without brackets
+     *		2. Different priority without brackets
+     * 	
+     * 	
+     */
     
     @Test(expected=AssertionError.class)
     public void testAssertionsEnabled() {
