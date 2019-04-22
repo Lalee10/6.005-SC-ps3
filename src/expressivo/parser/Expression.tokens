@@ -1,8 +1,11 @@
 T__0=1
 T__1=2
-T__2=3
-NUMBER=4
-SPACES=5
-'+'=1
-'('=2
-')'=3
+NUMBER=3
+VAR=4
+WSPACE=5
+ADD=6
+MULTIPLY=7
+'('=1
+')'=2
+'+'=6
+'*'=7
