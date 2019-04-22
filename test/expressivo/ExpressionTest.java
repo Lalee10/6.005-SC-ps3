@@ -35,11 +35,59 @@ public class ExpressionTest {
 	Expression t6 = new Multiply(new Number(5), new Variable("x"));
 	Expression t7 = new Multiply(new Number(5), new Variable("x"));
 	
+	
+	Number testInt = new Number(15);
+    Number testDec = new Number(0.19);
+    Variable testLower = new Variable("b");
+    Variable testUpper = new Variable("B");
+    Variable testWord = new Variable("beTa");
+    Add testPlusSimple = new Add(testInt,testLower);
+    Add testPlusSimpleRev = new Add(testLower,testInt);
+    Multiply testMultSimple = new Multiply(testInt,testLower);
+    Multiply testMultSimpleRev = new Multiply(testLower,testInt);
+	
     @Test(expected=AssertionError.class)
     public void testAssertionsEnabled() {
         assert false; // make sure assertions are enabled with VM argument: -ea
     }
     
+    
+    @Test
+    
+    public void parseNumber() {
+    	assertEquals(Expression.parse("15"),testInt);
+    	assertEquals(Expression.parse("15.0"),testInt);
+    	assertEquals(Expression.parse("(15)"),testInt);
+    	assertEquals(Expression.parse("0.19"),testDec);
+    	assertEquals(Expression.parse("(0.19)"),testDec);
+    }
+    
+    @Test
+    public void parseVariable() {
+    	assertEquals(Expression.parse("B"),testUpper);
+    	assertEquals(Expression.parse("(B)"),testUpper);
+        assertEquals(Expression.parse("\tb"),testLower);
+        assertEquals(Expression.parse("(b\n)"),testLower);
+        assertEquals(Expression.parse("beTa\n"),testWord);
+        assertEquals(Expression.parse("(\tbeTa)"),testWord);
+    }
+    
+    @Test 
+    public void testParseSum(){
+        assertEquals(Expression.parse("15 + b"),testPlusSimple);
+        assertEquals(Expression.parse("  (15 + b)  "),testPlusSimple);
+        assertEquals(Expression.parse("b + 15"),testPlusSimpleRev);
+        assertEquals(Expression.parse("   (b + 15)   "),testPlusSimpleRev);
+    }
+    
+    
+    @Test 
+    public void testParseMult(){
+        assertEquals(Expression.parse("15 * b"),testMultSimple);
+        assertEquals(Expression.parse("  (15 * b)  "),testMultSimple);
+        assertEquals(Expression.parse("b * 15"),testMultSimpleRev);
+        assertEquals(Expression.parse("    (b * 15)   "),testMultSimpleRev);
+    }
     
     // TODO tests for Expression
     @Test
